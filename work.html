@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Work.com</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+
+        <style>
+
+            body{
+                margin: 0;
+                font-family: "Finger Paint", roboto, arial;
+                color: white;
+                min-width:100vw;
+                min-height:100vh;
+            }
+
+            .background-video{
+                top:0;
+                left:0;
+                position: absolute;
+                width: 100vw;
+                height:100vh;
+                overflow: hidden;
+                backdrop-filter: blur(5px);
+            }
+
+            video{
+                height:100%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+
+            body::-webkit-scrollbar{
+                display: none;
+            }
+
+            .bg-fade-in{
+                animation-name: bg-fade;
+                animation-duration: 2s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+            }
+
+            @keyframes bg-fade {
+                from{
+                    background-color: rgb(10, 9, 8);
+                }
+                to{
+                    background-color: white;
+                }
+            }
+
+            .not-loaded-body{
+                background-color: rgb(10, 9, 8);
+            }
+
+            .vee-portrait-div{
+                width:330px;
+                margin-left: 33vw;
+                margin-top: 29vh;
+                position: absolute;
+                /* animation-name: small-anvee-scroll;
+                animation-timeline: view(); */
+            }
+
+
+            .vee-portrait{
+                width: 100%;
+            }
+
+            .not-loaded{
+                opacity: 0;
+                position: fixed;
+            }
+
+            .load-vee-port{
+                animation-name: vee-fade-in;
+                animation-duration: 1.5s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+            }
+
+            @keyframes vee-fade-in {
+                from{
+                    opacity: 0;
+                }
+
+                to{
+                    opacity: 1;
+                }
+            }
+
+
+            .loader{
+                border-width: 10px;
+                border-color: white;
+                border-top: 10px rgb(56, 189, 230);
+                border-style:solid;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                margin-left: 47vw;
+                margin-top: 35vh;
+                animation-name: loading;
+                animation-duration: 1s;
+                animation-iteration-count: 4;
+                position: fixed;
+            }
+
+            @keyframes loading{
+                from{
+                    transform: rotate(0deg);
+                }
+                to{
+                    transform: rotate(360deg);
+                }
+            }
+
+            .loader-after-loading{
+                animation-name:loader-unfold;
+                animation-duration: 5s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                animation-timing-function: ease-in;
+            }
+
+            @keyframes loader-unfold{
+                30%{
+                    border-radius: 0;
+                    transform: rotate(0deg);
+                }
+                70%{
+                    border-color: aqua;
+
+                }
+
+                80%{
+                    border-color: red;
+                    height:60px;
+                    width: 60px;
+                    /* transform: translateY(-200px); */
+                }
+                100%{
+                    transform: rotate(2160deg);
+                    /* transform: translateY(-20px); */
+                    opacity:0;
+                }
+            }
+
+            .moving-letters-load{
+                color: white;
+                margin-left:49.5vw;
+                margin-top:65vh;
+                position: fixed;
+                font-size: 55px;
+                animation-name: space-letters-anvee;
+                animation-iteration-count: infinite;
+                animation-duration: 2s;
+                text-align: center;
+                transform: translate(-50%, -50%);
+                text-indent: 70px;
+            }
+
+            @keyframes space-letters-anvee{
+                0%, 100%{
+                    letter-spacing: normal;
+                    text-indent:0;
+                }
+                50%{
+                    letter-spacing: 70px;
+                    text-indent: 70px;
+                }
+                
+            }
+
+            .blue-v{
+                color:rgb(56, 189, 230);
+            }
+
+            .happy-birthday-loading-container{
+                display:inline-block;
+                max-width: fit-content;
+                position: fixed;
+                margin-left: 34vw;
+                margin-top:35vh;
+                font-size: 60px;
+            }
+
+            .to-add-happy-birthday-loading{
+                opacity:0;
+                position: fixed;
+            }
+
+            .happy-birthday-loading{
+                position: relative;
+                opacity: 1;
+                border-right: white 1px solid;
+                overflow: hidden;
+                width:0;
+                white-space: nowrap;
+                text-wrap: none;
+                animation-name: typing-birthday;
+                animation-timing-function: steps(30);
+                animation-duration: 3s;
+                animation-fill-mode: forwards;
+            }
+
+            @keyframes typing-birthday{
+                0%{
+                    width:10px;
+                }
+                100%{
+                    width:100%;
+                }
+            }
+
+
+            .fade-out-loading-screen{
+                animation-name: fade-out-load;
+                animation-iteration-count: 1;
+                animation-duration: 2s;
+                animation-timing-function: linear;
+                animation-fill-mode: forwards;
+            }
+
+            @keyframes fade-out-load {
+                to{
+                    opacity: 0;
+                }
+            }
+
+            .after-loading-background{
+                height:100vh;
+                position: absolute;
+                filter: blur(3px);
+            }
+
+            .load-header{
+                font-family: "Finger Paint";
+                position: absolute;
+                margin-top: 9vh;
+                font-size: 400px;
+                margin-left: 14vw;
+                letter-spacing: 220px;
+                color:black;
+                animation-name: move-small;
+                animation-timeline: view();
+                animation-fill-mode: forwards;
+            }
+
+            @keyframes move-small {
+                50%{
+                    scale: 1;
+                }
+
+                100%{
+                    scale:0.6;
+                }
+            }
+
+            .night-try{
+                margin-top:110vh;
+                width:100vw;
+            }
+
+            .out-div{
+                position: relative;
+                height:fit-content;
+            }
+
+            .topbar-visible{
+                margin-bottom: 3vh;
+                width: 7vw;
+                padding-right: 1vw;
+                height:10vh;
+                position: fixed;
+                /* margin-right: 12vw; */
+                z-index: 10000;
+                border-radius: 800px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                white-space: nowrap;
+                justify-content: center;
+                /* backdrop-filter: blur(12px); */
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+
+                background: rgba(255, 255, 255, 0.05);
+  
+  /* 2. Blur the background (refraction) */
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(10px);
+                
+                /* 3. The Border: Brighter on top, invisible on bottom */
+                border-top: 1px solid rgba(255, 255, 255, 0.8);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                border-left: 1px solid rgba(255, 255, 255, 0.3);
+                border-right: 1px solid rgba(255, 255, 255, 0.3);
+                font-weight: 620;
+                box-shadow: 
+                    /* Sharp white reflection on top (The 'Wet' shine) */
+                    inset 0 1px 2px rgba(255, 255, 255, 0.9),
+                    /* Soft white glow in the middle */
+                    inset 0 10px 20px rgba(255, 255, 255, 0.2),
+                    /* Darker shadow at the bottom to show thickness */
+                    inset 0 -5px 10px rgba(0, 0, 0, 0.1),
+                    /* External shadow to lift it off the page */
+                    0 15px 25px rgba(0, 0, 0, 0.2);
+                transition: width 1s;
+            }
+
+            .topbar-button {
+                flex: 1;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0; /* Hidden while the bar is small */
+                transition: opacity 0.4s, backdrop-filter 0.3s;
+                cursor: pointer;
+                font-size: 14px;
+                text-decoration: none;
+                color:aliceblue;
+            }
+
+            .topbar-button:hover{
+                backdrop-filter: blur(20px);
+            }
+
+            .topbar-visible:hover {
+                opacity: 1;
+                width:60vw;
+                transform: scale(1.05); /* Slight pop */
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glow */
+                border-radius: 70px;
+                justify-content: space-around;
+            }
+
+            .topbar-visible:hover .topbar-button {
+                opacity: 1; /* Fade in buttons on hover */
+            }
+
+            .topbar-button:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .topbar-middle {
+                min-width: 10vw;
+                /* text-align: center; */
+                display: flex;
+                align-items: center;
+                /* justify-content: center; */
+                font-weight: bold;
+                cursor: default;
+                /* padding-right: 20px; */
+                text-decoration: none;
+                color:aliceblue;
+                /* padding-right: 20px; */
+                padding-left:55px;
+            }
+            
+            .topbar-container{
+                height:20vh;
+                width: 100vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                /* color:black; */
+                z-index: 9999;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="out-div">
+            <!-- <img class="after-loading-background" src="Photos\collage2.jpg"> -->
+            <div class="background-video">
+                <video autoplay muted loop playsinline >
+                    <source src="Photos\background-collage-video.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="topbar-container">
+                <div class="topbar-visible">
+                    <a class="topbar-button" href="truth.html">Truths</a>
+                    <a class="topbar-button" href="moods.html">Moods</a>
+                    <a class="topbar-button" href="description.html">Description</a>
+                    <a class="topbar-middle" href="work.html">Home</a>
+                    <a class="topbar-button" href="goals.html">Quests</a>
+                    <a class="topbar-button" href="prize.html">OG</a>
+                    <a class="topbar-button">btn 6</a>
+                </div>
+            </div>
+            <h1 class="load-header">अन्वी</h1>
+            <div class="vee-portrait-div load-vee-port">
+                <img class="vee-portrait" src="Photos\Vee_portrait.png">
+            </div>
+        </div>
+        <div>
+            <img class="night-try" src="Photos\Night.jpg">
+        </div>
+
+
+    </body>
+</html>

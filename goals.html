@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Goals.com</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tsukimi+Rounded&display=swap" rel="stylesheet">
+
+        <style>
+            body{
+                margin: 0;
+                font-family: "Finger Paint", roboto, arial;
+                color: white;
+                min-width:100vw;
+                min-height:100vh;
+                font-family: "Tsukimi Rounded";
+            }
+
+            .background-video{
+                top:0;
+                left:0;
+                position: absolute;
+                width: 100vw;
+                height:100vh;
+                overflow: hidden;
+                backdrop-filter: blur(5px);
+            }
+
+            video{
+                height:100%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+
+            body::-webkit-scrollbar{
+                display: none;
+            }
+
+            .todo-div{
+                width:40vw;
+                height:80vh;
+                top:10vh;
+                left:50%;
+                transform: translateX(-50%);
+                background-color: blanchedalmond;
+                position: fixed;
+                color:black;
+                overflow: scroll;
+                padding-top: 20px;
+                border-radius: 5vh;
+                padding: 20px;
+            }
+
+            .todo-div::-webkit-scrollbar{
+                display: none;
+            }
+
+            .todo-check{
+                display: inline-block;
+                margin-right: 0;
+                margin-left: 3vw;
+
+            }
+
+            .todo-task{
+                display: inline-block;
+                margin-left: 0;
+                padding-left: 0;
+            }
+
+            .new-task-input {
+                /* margin-top: 20px; */
+                padding: 12px 18px;
+                border: 2px solid #D2B48C; /* Tan/Light Brown border */
+                background: #FFFBF0; /* Slightly lighter than Almond */
+                border-radius: 30px; /* Rounded pill shape for a softer look */
+                color: #5D4037; /* Darker brown text */
+                font-size: 1rem;
+                outline: none;
+                transition: all 0.3s ease;
+                box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.05);
+            }
+
+            .new-task-input:focus {
+                border-color: #8B4513; /* Saddle Brown focus */
+                background: #FFFFFF;
+            }
+
+            .butt {
+                padding: 12px 28px;
+                background: #8B4513; /* Warm Brown */
+                color: #FFEBCD; /* Almond Blanche text for contrast */
+                border: none;
+                border-radius: 30px;
+                margin-right: 20px;
+                margin-left: 20px;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 4px 10px rgba(139, 69, 19, 0.3);
+            }
+
+            .butt:hover {
+                background: #A0522D; /* Sienna */
+                transform: scale(1.05);
+                box-shadow: 0 6px 15px rgba(139, 69, 19, 0.4);
+            }
+
+            .butt:active {
+                transform: scale(0.95);
+            }
+
+            .topbar-visible{
+                margin-bottom: 3vh;
+                top:3vh;
+                width: 7vw;
+                padding-right: 1vw;
+                height:5vh;
+                position: fixed;
+                /* margin-right: 12vw; */
+                z-index: 10000;
+                border-radius: 800px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                white-space: nowrap;
+                justify-content: center;
+                /* backdrop-filter: blur(12px); */
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+
+                background: rgba(255, 255, 255, 0.05);
+  
+  /* 2. Blur the background (refraction) */
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(10px);
+                
+                /* 3. The Border: Brighter on top, invisible on bottom */
+                border-top: 1px solid rgba(255, 255, 255, 0.8);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                border-left: 1px solid rgba(255, 255, 255, 0.3);
+                border-right: 1px solid rgba(255, 255, 255, 0.3);
+                font-weight: 620;
+                box-shadow: 
+                    /* Sharp white reflection on top (The 'Wet' shine) */
+                    inset 0 1px 2px rgba(255, 255, 255, 0.9),
+                    /* Soft white glow in the middle */
+                    inset 0 10px 20px rgba(255, 255, 255, 0.2),
+                    /* Darker shadow at the bottom to show thickness */
+                    inset 0 -5px 10px rgba(0, 0, 0, 0.1),
+                    /* External shadow to lift it off the page */
+                    0 15px 25px rgba(0, 0, 0, 0.2);
+                transition: width 1s;
+                pointer-events: auto;
+            }
+
+            .topbar-button {
+                flex: 1;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0; /* Hidden while the bar is small */
+                transition: opacity 0.4s, backdrop-filter 0.3s;
+                cursor: pointer;
+                font-size: 14px;
+                text-decoration: none;
+                color:aliceblue;
+            }
+
+            .topbar-button:hover{
+                backdrop-filter: blur(20px);
+            }
+
+            .topbar-visible:hover {
+                opacity: 1;
+                width:60vw;
+                transform: scale(1.05); /* Slight pop */
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glow */
+                border-radius: 70px;
+                justify-content: space-around;
+            }
+
+            .topbar-visible:hover .topbar-button {
+                opacity: 1; /* Fade in buttons on hover */
+            }
+
+            .topbar-button:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .topbar-middle {
+                min-width: 10vw;
+                /* text-align: center; */
+                display: flex;
+                align-items: center;
+                /* justify-content: center; */
+                font-weight: bold;
+                cursor: default;
+                /* padding-right: 20px; */
+                text-decoration: none;
+                color:aliceblue;
+                /* padding-right: 20px; */
+                padding-left:55px;
+            }
+            
+            .topbar-container{
+                height:20vh;
+                width: 100vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                /* color:black; */
+                z-index: 9999;
+                pointer-events: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="background-video">
+            <video autoplay muted loop playsinline >
+                <source src="Photos\moving-background-mood.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="topbar-container">
+                <div class="topbar-visible">
+                    <a class="topbar-button" href="truth.html">Truths</a>
+                    <a class="topbar-button" href="moods.html">Moods</a>
+                    <a class="topbar-button" href="description.html">Description</a>
+                    <a class="topbar-middle" href="work.html">Home</a>
+                    <a class="topbar-button" href="goals.html">Quests</a>
+                    <a class="topbar-button" href="prize.html">OG</a>
+                    <a class="topbar-button">btn 6</a>
+                </div>
+            </div>
+
+        <div class="todo-div">
+            <input id="task-input" class="new-task-input" placeholder="New Quest!" type="text">
+            <button class="butt add-btn">CLick Me</button>
+            <button class="butt clr-btn">Clear All</button>
+            <div class="todo-list-item first">
+                <input class="todo-check" type="checkbox">
+                <ol class="todo-task"> Go shopping</ol>
+            </div>
+        </div>
+    </body>
+
+    <script src="goals.js"></script>
+</html>

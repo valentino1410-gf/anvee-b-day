@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Truths About anvee</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+        <style>
+            body{
+                margin:0;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+
+            .outmost-div{
+                height: 100vh;
+                overflow: hidden;
+                
+            }
+            .background{
+                height: 100%;
+                position: fixed;
+                filter: blur(6px);
+            }
+
+            .vee-img{
+                margin-top: 20px;
+                width:10vw;
+                height: 10vw;
+                z-index: 9999;
+                /* position: fixed; */
+                /* top:200px; */
+                margin-left: 50%; 
+                transform: translateX(-50%);
+                border-radius: 50%;
+
+            }
+
+            .content-div{
+                /* display: flex; */
+                /* align-items: center; */
+                /* column-gap: 33%; */
+                /* row-gap: 50%; */
+                /* justify-content: center; */
+                /* flex-direction: column; */
+                left:50%;
+                position: fixed;
+                top:18vh;
+                transform: translateX(-50%);                
+                width:30vw;
+                height:70vh;
+                background-color: blanchedalmond;
+            }
+
+            .truth-button{
+                width: 20vw;
+                height:10vh;
+                background-color: blueviolet;
+                color:white;
+                border-style: solid;
+                border-radius: 3px;
+                border:none;
+                font-family: Roboto;
+                font-size:20px;
+                margin-top:20%;
+                margin-left: 50%;
+                transform: translateX(-50%);
+                transition: background-color 0.4s, color 0.4s;
+            }
+
+            .truth-button:hover{
+                color:black;
+                background-color:orange;
+            }
+
+            .dialogue{
+                margin-left: 50%;
+                transform: translateX(-50%);
+                margin-top: 20%;
+                font-size: 20px;
+                text-decoration: bold;
+                font-weight: 500;
+                font-family: Roboto;
+                text-align: center;
+            }
+
+            .topbar-visible{
+                width: 7vw;
+                height:10vh;
+                padding-right: 5vh;
+                position: fixed;
+                margin-right: 12vw;
+                z-index: 10000;
+                border-radius: 30%;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                margin-left: 12vw;
+                flex-direction: row;
+                white-space: nowrap;
+                justify-content: center;
+                /* backdrop-filter: blur(12px); */
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+
+                background: rgba(255, 255, 255, 0.05);
+  
+  /* 2. Blur the background (refraction) */
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(10px);
+                
+                /* 3. The Border: Brighter on top, invisible on bottom */
+                border-top: 1px solid rgba(255, 255, 255, 0.8);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                border-left: 1px solid rgba(255, 255, 255, 0.3);
+                border-right: 1px solid rgba(255, 255, 255, 0.3);
+
+                box-shadow: 
+                    /* Sharp white reflection on top (The 'Wet' shine) */
+                    inset 0 1px 2px rgba(255, 255, 255, 0.9),
+                    /* Soft white glow in the middle */
+                    inset 0 10px 20px rgba(255, 255, 255, 0.2),
+                    /* Darker shadow at the bottom to show thickness */
+                    inset 0 -5px 10px rgba(0, 0, 0, 0.1),
+                    /* External shadow to lift it off the page */
+                    0 15px 25px rgba(0, 0, 0, 0.2);
+                transition: width 1s;
+            }
+
+            .topbar-button {
+                flex: 1;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0; /* Hidden while the bar is small */
+                transition: opacity 0.4s, backdrop-filter 0.3s;
+                cursor: pointer;
+                font-size: 14px;
+                text-decoration: none;
+                color:aliceblue;
+            }
+
+            .topbar-button:hover{
+                backdrop-filter: blur(20px);
+            }
+
+            .topbar-visible:hover {
+                opacity: 1;
+                width:60vw;
+                transform: scale(1.05); /* Slight pop */
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glow */
+                border-radius: 70px;
+                justify-content: space-around;
+            }
+
+            .topbar-visible:hover .topbar-button {
+                opacity: 1; /* Fade in buttons on hover */
+            }
+
+            .topbar-button:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .topbar-middle {
+                min-width: 10vw;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                cursor: default;
+                text-decoration: none;
+                color:aliceblue;
+                margin-right: 10px;
+            }
+            
+            .topbar-container{
+                height:20vh;
+                width: 100vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                z-index: 9999;
+            }
+
+            .fade-in-topbar{
+                animation-name: topbar-fade;
+                animation-duration: 2s;
+                /* animation-delay: 2s; */
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+            }
+
+            @keyframes topbar-fade {
+                from{
+                    opacity: 0;
+                    scale:0;
+                }
+
+                to{
+                    opacity: 1;
+                    scale:1;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="outmost-div">
+            <img src="Photos\Night.jpg" class="background">
+
+            <div class="topbar-container">
+                <div class="topbar-visible">
+                    <a class="topbar-button" href="truth.html">Truths</a>
+                    <a class="topbar-button" href="moods.html">Moods</a>
+                    <a class="topbar-button" href="description.html">Description</a>
+                    <a class="topbar-middle" href="work.html">Home</a>
+                    <a class="topbar-button" href="goals.html">Quests</a>
+                    <a class="topbar-button" href="prize.html">OG</a>
+                    <a class="topbar-button">btn 6</a>
+                </div>
+            </div>
+
+            <div class="content-div">
+                <img class="vee-img" src="Photos\anvee-face.png">
+                <div class="dialogue"></div>
+                <button class="truth-button">Click for truth</button>
+            </div>
+            
+        </div>
+    </body>
+
+
+
+    <script src="truth.js"></script>
+</html>

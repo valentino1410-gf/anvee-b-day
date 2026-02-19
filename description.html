@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> Character Description</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Story+Script&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Hina+Mincho&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Hina+Mincho&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+        <style>
+            body{
+                margin:0;
+
+            }
+
+            body::-webkit-scrollbar{
+                display: none;
+            }
+
+            .background-video{
+                position: fixed;
+                width: 100vw;
+                /* height:100vh; */
+                overflow: hidden;
+            }
+
+            video{
+                height:100%;
+                width: 100%;
+            }
+
+            .sound-toggle {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 20px;
+                background: rgba(255, 255, 255, 0.2); 
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                border-radius: 30px;
+                cursor: pointer;
+                font-family: sans-serif;
+                backdrop-filter: blur(5px); 
+                z-index: 100;
+                transition: background 0.3s;
+            }
+
+            .glass{
+                background: rgba(255, 255, 255, 0.2); 
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                border-radius: 30px;
+                cursor: pointer;
+                font-family: Roboto;
+                backdrop-filter: blur(5px); 
+                z-index: 100;
+                transition: background 0.3s;
+            }
+
+            .sound-toggle:hover {
+                background: rgba(255, 255, 255, 0.4);
+            }
+
+            .main-char{
+                /* width:100px; */
+                height:100vh;
+                top:200vh;
+                position: fixed;
+                z-index: 9999;
+                left:50%;
+                transform: translateX(-50%);
+                animation-name: main;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+                animation-iteration-count: 1;
+                animation-delay: 2.2s;
+            }
+
+            @keyframes main {
+                100%{
+                    top:20vh;
+                }
+            }
+            
+            .name{
+                font-family: "Finger Paint";
+                position: fixed;
+                font-size: 35vh;
+                left: 50%;
+                line-height: 35vh;
+                transform: translateX(-50%);
+                top:10vh;
+                animation-name: shrink;
+                animation-duration: 1s;
+                animation-delay: 2.2s;
+                animation-fill-mode: forwards;
+                transform-origin: top center;
+                /* color:rgb(89, 8, 8); */
+            }
+
+            @keyframes shrink{
+                to{
+                    transform : translateX(-50%) scale(0.5) translateY(-28vh);
+
+                }
+            }
+
+            .home{
+                font-size: 5vh;
+                position: fixed;
+                text-decoration: none;
+                color:aliceblue;
+                font-family: "Finger Paint";
+                top:2vh;
+                right:7vh;
+                transition: scale 0.5s, color 0.5s;
+            }
+
+            .home:hover{
+                scale: 2;
+                color:brown;
+            }
+
+            .left-box{
+                position: fixed;
+                font-family: "Sawarabai Mincho";
+                color:white;
+                width:22vw;
+                height: 72vh;
+                /* text-align: center; */
+                top:125vh;
+                left:10vw;
+                font-size: 20px;
+            }
+
+            ol{
+                list-style-type: disc;
+            }
+
+            .name-special{
+                color:rgb(28, 146, 50);
+            }
+
+            .sub-list{
+                padding-left:6vw;
+            }
+
+            .pop-up{
+                animation: slide-up;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+                animation-delay: 2.2s;
+                animation-iteration-count: 1;
+            }
+
+            @keyframes slide-up {
+                to{
+                    transform: translateY(-100vh);
+                }
+            }
+
+            .right-box{
+                position: fixed;
+                font-family: "Sawarabai Mincho";
+
+                color:white;
+                width:22vw;
+                height: 72vh;
+                /* text-align: center; */
+                top:125vh;
+                left:70vw;
+                font-size: 20px;
+            }
+
+            .header{
+                font-family: "Dela Gothic One";
+                font-weight: 800;
+                font-size: 15px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="out-div">
+            <img class="main-char" src="Photos\anime_anvee2_cutout.png">
+
+            <div class="background-video">
+                <video autoplay muted loop playsinline >
+                    <source src="Photos\Classy_Blue_Flames_Website_Background.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="name">anvee Patil</div>
+
+            <button class="sound-toggle to-enable">🔊 Enable Sound</button>
+            <a class="home" href="work.html"> Home </a>
+
+            <div class="left-box glass pop-up">
+                <ul class="list-element">CHARACTER DESCRIPTION: </ul>
+                <ol class="list-element"><span class="header">Name : </span><span class="name-special">anvee Patil </span>(note the small a)</ol>
+                <ol class="list-element"><span class="header">Age</span> : 19!</ol>
+                <ol class="list-element"><span class="header">Date of origin</span> : 20th feb</ol>
+                <ol class="list-element"><span class="header">Place of origin</span> : Pune</ol>
+                <ol class="list-element"><span class="header">Rank</span> : SSS</ol>
+                <ol class="list-element"><span class="header">Availability</span> : One of a Kind</ol>
+                <ol class="list-element"><span class="header">Usually found</span> : </ol>
+                <ol class="list-element sub-list">McDonalds</ol>
+                <ol class="list-element sub-list">Pani Puri Stall</ol>
+                <!-- <ol class="list-element sub-list">MLH</ol> -->
+            </div>
+
+            <div class="right-box glass pop-up">
+                <ol class="list-element header">Special Abilities</ol>
+                <ol class="list-element sub-list">Volleyball - 100</ol>
+                <ol class="list-element sub-list">Fashion Goddess - 999+</ol>
+                <ol class="list-element sub-list">Debating - Wisdom+ card</ol>
+                <ol class="list-element sub-list">Biting - &#8734</ol>
+                <ol class="list-element sub-list">Mosquito Attraction - 9999</ol>
+                <ol class="list-element header">Weakness: </ol>
+                <ol class="list-element sub-list">Boars</ol>
+                <ol class="list-element header">Common Phrases : </ol>
+                <ol class="list-element sub-list">Wooowwww</ol>
+                <ol class="list-element sub-list">Yessir</ol>
+                <ol class="list-element sub-list">Fuck u</ol>
+            </div>
+        </div>
+    </body>
+
+    <script src="description.js"></script>
+
+</html>
